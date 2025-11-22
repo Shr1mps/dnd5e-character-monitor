@@ -58,6 +58,46 @@
             "lang": "ja",
             "name": "日本語",
             "path": "./languages/ja.json"
+        },
+        {
+            "lang": "es",
+            "name": "Español",
+            "path": "./languages/es.json"
+        },
+        {
+            "lang": "fr",
+            "name": "Français",
+            "path": "./languages/fr.json"
+        },
+        {
+            "lang": "it",
+            "name": "Italiano",
+            "path": "./languages/it.json"
+        },
+        {
+            "lang": "de",
+            "name": "Deutsch",
+            "path": "./languages/de.json"
+        },
+        {
+            "lang": "pt-BR",
+            "name": "Português (Brasil)",
+            "path": "./languages/pt-BR.json"
+        },
+        {
+            "lang": "zh-CN",
+            "name": "中文 (简体)",
+            "path": "./languages/zh-CN.json"
+        },
+        {
+            "lang": "ru",
+            "name": "Русский",
+            "path": "./languages/ru.json"
+        },
+        {
+            "lang": "ko",
+            "name": "한국어",
+            "path": "./languages/ko.json"
         }
     ],
     "socket": true,
