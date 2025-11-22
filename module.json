@@ -1,6 +1,6 @@
 {
-    "id": "dnd5e-character-monitor",
-    "title": "D&D5e Character Monitor",
+    "id": "shr1mps-character-monitor",
+    "title": "Character Monitor D&D5e",
     "description": "Log an alert in chat when certain changes to an actor are made.",
     "version": "1.0.0",
     "authors": [
