@@ -2,149 +2,149 @@
     "characterMonitor": {
         "settings": {
             "cmColorsMenu": {
-                "name": "Customize Character Monitor Colors",
-                "label": "Customize"
+                "name": "自定义角色监控颜色",
+                "label": "自定义"
             },
             "monitorHP": {
-                "name": "Monitor HP",
-                "hint": "Tracks when a character's or NPC's HP changes."
+                "name": "监控生命值",
+                "hint": "追踪角色或NPC生命值的变化。"
             },
             "monitorEquip": {
-                "name": "Monitor Equipment",
-                "hint": "Tracks when a character equips/unequips equipment."
+                "name": "监控装备",
+                "hint": "追踪角色装备/卸下装备。"
             },
             "monitorQuantity": {
-                "name": "Monitor Quantity",
-                "hint": "Tracks when a character's item changes quantity."
+                "name": "监控数量",
+                "hint": "追踪角色物品数量的变化。"
             },
             "monitorAttune": {
-                "name": "Monitor Attunement",
-                "hint": "Tracks when a character attunes to equipment or breaks attunement."
+                "name": "监控同调",
+                "hint": "追踪角色同调装备或解除同调。"
             },
             "monitorSpellPrep": {
-                "name": "Monitor Spell Preparation",
-                "hint": "Tracks when a character prepares/unprepares a spell."
+                "name": "监控法术准备",
+                "hint": "追踪角色准备/取消准备法术。"
             },
             "monitorSpellSlots": {
-                "name": "Monitor Spell Slots",
-                "hint": "Tracks when a character changes spell slot counts on their character sheet."
+                "name": "监控法术位",
+                "hint": "追踪角色卡上法术位数量的变化。"
             },
             "monitorFeats": {
-                "name": "Monitor Features",
-                "hint": "Tracks when a character changes feature use counts on their character sheet."
+                "name": "监控特性",
+                "hint": "追踪角色卡上特性使用次数的变化。"
             },
             "monitorResources": {
-                "name": "Monitor Resources",
-                "hint": "Tracks when a character changes resources values counts on their character sheet."
+                "name": "监控资源",
+                "hint": "追踪角色卡上资源数值的变化。"
             },
             "monitorActiveEffects": {
-                "name": "Monitor Active Effects",
-                "hint": "Tracks when a character changes active effects on their character sheet."
+                "name": "监控主动效果",
+                "hint": "追踪角色卡上主动效果的变化。"
             },
             "monitorCurrency": {
-                "name": "Monitor Currency",
-                "hint": "Tracks when a character changes currency on their character sheet."
+                "name": "监控货币",
+                "hint": "追踪角色卡上货币的变化。"
             },
             "monitorProficiency": {
-                "name": "Monitor Skill Proficiency",
-                "hint": "Tracks when a character changes skill proficiency."
+                "name": "监控技能熟练度",
+                "hint": "追踪角色技能熟练度的变化。"
             },
             "monitorAbility": {
-                "name": "Monitor Ability Scores",
-                "hint": "Tracks when a character changes ability scores."
+                "name": "监控属性值",
+                "hint": "追踪角色属性值的变化。"
             },
             "monitorSheetMode": {
-                "name": "Monitor Sheet Mode Toggle",
-                "hint": "Tracks when character sheet toggles between Play and Edit modes."
+                "name": "监控角色卡模式切换",
+                "hint": "追踪角色卡在游戏和编辑模式之间的切换。"
             },
             "showGMonly": {
-                "name": "Display Character Monitor to GM Users only",
-                "hint": "Chat messages can be revealed to players using context menu."
+                "name": "仅向GM用户显示角色监控",
+                "hint": "可以使用上下文菜单向玩家显示聊天消息。"
             },
             "allowPlayerView": {
-                "name": "Allow players to see their own messages",
-                "hint": "If GM-only mode is enabled, this setting allows players to still see their own monitor messages."
+                "name": "允许玩家查看自己的消息",
+                "hint": "如果启用了仅GM模式，此设置允许玩家仍然看到自己的监控消息。"
             },
             "showToggle": {
-                "name": "Show Character Monitor Toggle",
-                "hint": "Temporarily disable Character Monitor by toggling off the control button on the token toolbar. The control button is only visible to GM users."
+                "name": "显示角色监控开关",
+                "hint": "通过关闭标记工具栏上的控制按钮暂时禁用角色监控。控制按钮仅对GM用户可见。"
             },
             "trashIcon": {
-                "name": "Enable Health Monitor Chat Message Trash Icon"
+                "name": "启用健康监控聊天消息垃圾桶图标"
             },
             "useTokenName": {
-                "name": "Use Token Name",
-                "hint": "For unlinked tokens, token name will be used. For linked tokens, prototype token name will be used."
+                "name": "使用标记名称",
+                "hint": "对于未链接的标记，将使用标记名称。对于链接的标记，将使用原型标记名称。"
             },
             "hideNPCs": {
-                "name": "Hide NPC Health Log from Players",
-                "hint": "GM users can reveal chat messages to players using context menu"
+                "name": "向玩家隐藏NPC健康日志",
+                "hint": "GM用户可以使用上下文菜单向玩家显示聊天消息"
             },
             "hideNPCname": {
-                "name": "Hide NPC Name",
-                "hint": "Replaces NPC name with text set below."
+                "name": "隐藏NPC名称",
+                "hint": "用下面设置的文本替换NPC名称。"
             },
             "replacementName": {
-                "name": "Hidden NPC Name Replacement",
-                "hint": "If above setting is enabled, NPC name will be replaced with text entered here."
+                "name": "隐藏NPC名称替换",
+                "hint": "如果启用了上述设置，NPC名称将被此处输入的文本替换。"
             }
         },
         "control": {
-            "title": "Toggle Character Monitor"
+            "title": "切换角色监控"
         },
         "chatMessage": {
             "hp": {
-                "value": "HP",
-                "max": "Max HP",
-                "temp": "Temp HP"
+                "value": "生命值",
+                "max": "最大生命值",
+                "temp": "临时生命值"
             },
-            "equipped": "equipped",
-            "unequipped": "unequipped",
-            "prepared": "prepared",
-            "unprepared": "unprepared",
-            "aSpell": "a spell",
-            "uses": "uses",
-            "attunesTo": "attunes to an item",
-            "breaksAttune": "breaks attunement to an item",
-            "SpellSlots": "Spell Slots",
-            "enabled": "enabled",
-            "disabled": "disabled",
+            "equipped": "已装备",
+            "unequipped": "已卸下",
+            "prepared": "已准备",
+            "unprepared": "未准备",
+            "aSpell": "一个法术",
+            "uses": "使用次数",
+            "attunesTo": "同调物品",
+            "breaksAttune": "解除物品同调",
+            "SpellSlots": "法术位",
+            "enabled": "已启用",
+            "disabled": "已禁用",
             "duration": {
-                "seconds": "seconds",
-                "startTime": "start time",
-                "rounds": "rounds",
-                "turns": "turns",
-                "startRound": "start round",
-                "startTurn": "start turn"
+                "seconds": "秒",
+                "startTime": "开始时间",
+                "rounds": "轮",
+                "turns": "回合",
+                "startRound": "开始轮",
+                "startTurn": "开始回合"
             },
             "effects": {
-                "label": "label",
-                "mode": "mode",
-                "value": "value"
+                "label": "标签",
+                "mode": "模式",
+                "value": "数值"
             },
-            "sheetMode": "Sheet Mode"
+            "sheetMode": "角色卡模式"
         },
         "colorMenu": {
-            "hpPlus": "HP Increases",
-            "hpMinus": "HP Decreases",
-            "on": "Equip/Prepare/Attune",
-            "off": "Unequip/Unprepare/Break Attunement"
+            "hpPlus": "生命值增加",
+            "hpMinus": "生命值减少",
+            "on": "装备/准备/同调",
+            "off": "卸下/取消准备/解除同调"
         }
     },
     "healthMonitor": {
         "control": {
-            "title": "Toggle Health Monitor"
+            "title": "切换健康监控"
         },
         "chatMessage": {
-            "heals": "heals",
-            "takes": "takes",
-            "damage": "damage",
-            "gains": "gains",
-            "loses": "loses",
-            "maxHP": "max HP",
-            "Immunity": "Immunity",
-            "Resistance": "Resistance",
-            "Vulnerability": "Vulnerability"
+            "heals": "治疗",
+            "takes": "受到",
+            "damage": "伤害",
+            "gains": "获得",
+            "loses": "失去",
+            "maxHP": "最大生命值",
+            "Immunity": "免疫",
+            "Resistance": "抗性",
+            "Vulnerability": "易伤"
         }
     }
 }

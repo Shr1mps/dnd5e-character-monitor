@@ -2,149 +2,149 @@
     "characterMonitor": {
         "settings": {
             "cmColorsMenu": {
-                "name": "Customize Character Monitor Colors",
-                "label": "Customize"
+                "name": "캐릭터 모니터 색상 사용자 지정",
+                "label": "사용자 지정"
             },
             "monitorHP": {
-                "name": "Monitor HP",
-                "hint": "Tracks when a character's or NPC's HP changes."
+                "name": "HP 모니터링",
+                "hint": "캐릭터 또는 NPC의 HP가 변경될 때 추적합니다."
             },
             "monitorEquip": {
-                "name": "Monitor Equipment",
-                "hint": "Tracks when a character equips/unequips equipment."
+                "name": "장비 모니터링",
+                "hint": "캐릭터가 장비를 장착/해제할 때 추적합니다."
             },
             "monitorQuantity": {
-                "name": "Monitor Quantity",
-                "hint": "Tracks when a character's item changes quantity."
+                "name": "수량 모니터링",
+                "hint": "캐릭터의 아이템 수량이 변경될 때 추적합니다."
             },
             "monitorAttune": {
-                "name": "Monitor Attunement",
-                "hint": "Tracks when a character attunes to equipment or breaks attunement."
+                "name": "동조 모니터링",
+                "hint": "캐릭터가 아이템에 동조하거나 동조를 해제할 때 추적합니다."
             },
             "monitorSpellPrep": {
-                "name": "Monitor Spell Preparation",
-                "hint": "Tracks when a character prepares/unprepares a spell."
+                "name": "주문 준비 모니터링",
+                "hint": "캐릭터가 주문을 준비/해제할 때 추적합니다."
             },
             "monitorSpellSlots": {
-                "name": "Monitor Spell Slots",
-                "hint": "Tracks when a character changes spell slot counts on their character sheet."
+                "name": "주문 슬롯 모니터링",
+                "hint": "캐릭터 시트에서 주문 슬롯 수가 변경될 때 추적합니다."
             },
             "monitorFeats": {
-                "name": "Monitor Features",
-                "hint": "Tracks when a character changes feature use counts on their character sheet."
+                "name": "특성 모니터링",
+                "hint": "캐릭터 시트에서 특성 사용 횟수가 변경될 때 추적합니다."
             },
             "monitorResources": {
-                "name": "Monitor Resources",
-                "hint": "Tracks when a character changes resources values counts on their character sheet."
+                "name": "자원 모니터링",
+                "hint": "캐릭터 시트에서 자원 값이 변경될 때 추적합니다."
             },
             "monitorActiveEffects": {
-                "name": "Monitor Active Effects",
-                "hint": "Tracks when a character changes active effects on their character sheet."
+                "name": "활성 효과 모니터링",
+                "hint": "캐릭터 시트에서 활성 효과가 변경될 때 추적합니다."
             },
             "monitorCurrency": {
-                "name": "Monitor Currency",
-                "hint": "Tracks when a character changes currency on their character sheet."
+                "name": "통화 모니터링",
+                "hint": "캐릭터 시트에서 통화가 변경될 때 추적합니다."
             },
             "monitorProficiency": {
-                "name": "Monitor Skill Proficiency",
-                "hint": "Tracks when a character changes skill proficiency."
+                "name": "기술 숙련도 모니터링",
+                "hint": "캐릭터의 기술 숙련도가 변경될 때 추적합니다."
             },
             "monitorAbility": {
-                "name": "Monitor Ability Scores",
-                "hint": "Tracks when a character changes ability scores."
+                "name": "능력치 모니터링",
+                "hint": "캐릭터의 능력치가 변경될 때 추적합니다."
             },
             "monitorSheetMode": {
-                "name": "Monitor Sheet Mode Toggle",
-                "hint": "Tracks when character sheet toggles between Play and Edit modes."
+                "name": "시트 모드 전환 모니터링",
+                "hint": "캐릭터 시트가 플레이 모드와 편집 모드 사이를 전환할 때 추적합니다."
             },
             "showGMonly": {
-                "name": "Display Character Monitor to GM Users only",
-                "hint": "Chat messages can be revealed to players using context menu."
+                "name": "GM 사용자에게만 캐릭터 모니터 표시",
+                "hint": "채팅 메시지는 컨텍스트 메뉴를 사용하여 플레이어에게 공개할 수 있습니다."
             },
             "allowPlayerView": {
-                "name": "Allow players to see their own messages",
-                "hint": "If GM-only mode is enabled, this setting allows players to still see their own monitor messages."
+                "name": "플레이어가 자신의 메시지를 볼 수 있도록 허용",
+                "hint": "GM 전용 모드가 활성화된 경우, 이 설정을 통해 플레이어는 여전히 자신의 모니터 메시지를 볼 수 있습니다."
             },
             "showToggle": {
-                "name": "Show Character Monitor Toggle",
-                "hint": "Temporarily disable Character Monitor by toggling off the control button on the token toolbar. The control button is only visible to GM users."
+                "name": "캐릭터 모니터 토글 표시",
+                "hint": "토큰 도구 모음의 제어 버튼을 꺼서 캐릭터 모니터를 일시적으로 비활성화합니다. 제어 버튼은 GM 사용자에게만 표시됩니다."
             },
             "trashIcon": {
-                "name": "Enable Health Monitor Chat Message Trash Icon"
+                "name": "건강 모니터 채팅 메시지 휴지통 아이콘 활성화"
             },
             "useTokenName": {
-                "name": "Use Token Name",
-                "hint": "For unlinked tokens, token name will be used. For linked tokens, prototype token name will be used."
+                "name": "토큰 이름 사용",
+                "hint": "연결되지 않은 토큰의 경우 토큰 이름이 사용됩니다. 연결된 토큰의 경우 프로토타입 토큰 이름이 사용됩니다."
             },
             "hideNPCs": {
-                "name": "Hide NPC Health Log from Players",
-                "hint": "GM users can reveal chat messages to players using context menu"
+                "name": "플레이어에게 NPC 건강 로그 숨기기",
+                "hint": "GM 사용자는 컨텍스트 메뉴를 사용하여 플레이어에게 채팅 메시지를 공개할 수 있습니다"
             },
             "hideNPCname": {
-                "name": "Hide NPC Name",
-                "hint": "Replaces NPC name with text set below."
+                "name": "NPC 이름 숨기기",
+                "hint": "NPC 이름을 아래에 설정된 텍스트로 대체합니다."
             },
             "replacementName": {
-                "name": "Hidden NPC Name Replacement",
-                "hint": "If above setting is enabled, NPC name will be replaced with text entered here."
+                "name": "숨겨진 NPC 이름 대체",
+                "hint": "위 설정이 활성화된 경우, NPC 이름은 여기에 입력된 텍스트로 대체됩니다."
             }
         },
         "control": {
-            "title": "Toggle Character Monitor"
+            "title": "캐릭터 모니터 전환"
         },
         "chatMessage": {
             "hp": {
                 "value": "HP",
-                "max": "Max HP",
-                "temp": "Temp HP"
+                "max": "최대 HP",
+                "temp": "임시 HP"
             },
-            "equipped": "equipped",
-            "unequipped": "unequipped",
-            "prepared": "prepared",
-            "unprepared": "unprepared",
-            "aSpell": "a spell",
-            "uses": "uses",
-            "attunesTo": "attunes to an item",
-            "breaksAttune": "breaks attunement to an item",
-            "SpellSlots": "Spell Slots",
-            "enabled": "enabled",
-            "disabled": "disabled",
+            "equipped": "장착됨",
+            "unequipped": "해제됨",
+            "prepared": "준비됨",
+            "unprepared": "준비 해제됨",
+            "aSpell": "주문",
+            "uses": "회 사용",
+            "attunesTo": "아이템에 동조함",
+            "breaksAttune": "아이템 동조 해제함",
+            "SpellSlots": "주문 슬롯",
+            "enabled": "활성화됨",
+            "disabled": "비활성화됨",
             "duration": {
-                "seconds": "seconds",
-                "startTime": "start time",
-                "rounds": "rounds",
-                "turns": "turns",
-                "startRound": "start round",
-                "startTurn": "start turn"
+                "seconds": "초",
+                "startTime": "시작 시간",
+                "rounds": "라운드",
+                "turns": "턴",
+                "startRound": "시작 라운드",
+                "startTurn": "시작 턴"
             },
             "effects": {
-                "label": "label",
-                "mode": "mode",
-                "value": "value"
+                "label": "라벨",
+                "mode": "모드",
+                "value": "값"
             },
-            "sheetMode": "Sheet Mode"
+            "sheetMode": "시트 모드"
         },
         "colorMenu": {
-            "hpPlus": "HP Increases",
-            "hpMinus": "HP Decreases",
-            "on": "Equip/Prepare/Attune",
-            "off": "Unequip/Unprepare/Break Attunement"
+            "hpPlus": "HP 증가",
+            "hpMinus": "HP 감소",
+            "on": "장착/준비/동조",
+            "off": "해제/준비 해제/동조 해제"
         }
     },
     "healthMonitor": {
         "control": {
-            "title": "Toggle Health Monitor"
+            "title": "건강 모니터 전환"
         },
         "chatMessage": {
-            "heals": "heals",
-            "takes": "takes",
-            "damage": "damage",
-            "gains": "gains",
-            "loses": "loses",
-            "maxHP": "max HP",
-            "Immunity": "Immunity",
-            "Resistance": "Resistance",
-            "Vulnerability": "Vulnerability"
+            "heals": "치유",
+            "takes": "받음",
+            "damage": "피해",
+            "gains": "얻음",
+            "loses": "잃음",
+            "maxHP": "최대 HP",
+            "Immunity": "면역",
+            "Resistance": "저항",
+            "Vulnerability": "취약성"
         }
     }
 }

@@ -2,149 +2,149 @@
     "characterMonitor": {
         "settings": {
             "cmColorsMenu": {
-                "name": "Customize Character Monitor Colors",
-                "label": "Customize"
+                "name": "Настройка цветов монитора персонажа",
+                "label": "Настроить"
             },
             "monitorHP": {
-                "name": "Monitor HP",
-                "hint": "Tracks when a character's or NPC's HP changes."
+                "name": "Отслеживать HP",
+                "hint": "Отслеживает изменения HP персонажа или NPC."
             },
             "monitorEquip": {
-                "name": "Monitor Equipment",
-                "hint": "Tracks when a character equips/unequips equipment."
+                "name": "Отслеживать снаряжение",
+                "hint": "Отслеживает, когда персонаж надевает/снимает снаряжение."
             },
             "monitorQuantity": {
-                "name": "Monitor Quantity",
-                "hint": "Tracks when a character's item changes quantity."
+                "name": "Отслеживать количество",
+                "hint": "Отслеживает изменение количества предметов у персонажа."
             },
             "monitorAttune": {
-                "name": "Monitor Attunement",
-                "hint": "Tracks when a character attunes to equipment or breaks attunement."
+                "name": "Отслеживать настройку",
+                "hint": "Отслеживает, когда персонаж настраивается на предмет или теряет настройку."
             },
             "monitorSpellPrep": {
-                "name": "Monitor Spell Preparation",
-                "hint": "Tracks when a character prepares/unprepares a spell."
+                "name": "Отслеживать подготовку заклинаний",
+                "hint": "Отслеживает, когда персонаж подготавливает/убирает заклинание."
             },
             "monitorSpellSlots": {
-                "name": "Monitor Spell Slots",
-                "hint": "Tracks when a character changes spell slot counts on their character sheet."
+                "name": "Отслеживать ячейки заклинаний",
+                "hint": "Отслеживает изменение количества ячеек заклинаний в листе персонажа."
             },
             "monitorFeats": {
-                "name": "Monitor Features",
-                "hint": "Tracks when a character changes feature use counts on their character sheet."
+                "name": "Отслеживать черты",
+                "hint": "Отслеживает изменение количества использований черт в листе персонажа."
             },
             "monitorResources": {
-                "name": "Monitor Resources",
-                "hint": "Tracks when a character changes resources values counts on their character sheet."
+                "name": "Отслеживать ресурсы",
+                "hint": "Отслеживает изменение значений ресурсов в листе персонажа."
             },
             "monitorActiveEffects": {
-                "name": "Monitor Active Effects",
-                "hint": "Tracks when a character changes active effects on their character sheet."
+                "name": "Отслеживать активные эффекты",
+                "hint": "Отслеживает изменение активных эффектов в листе персонажа."
             },
             "monitorCurrency": {
-                "name": "Monitor Currency",
-                "hint": "Tracks when a character changes currency on their character sheet."
+                "name": "Отслеживать валюту",
+                "hint": "Отслеживает изменение валюты в листе персонажа."
             },
             "monitorProficiency": {
-                "name": "Monitor Skill Proficiency",
-                "hint": "Tracks when a character changes skill proficiency."
+                "name": "Отслеживать владение навыками",
+                "hint": "Отслеживает изменение владения навыками персонажа."
             },
             "monitorAbility": {
-                "name": "Monitor Ability Scores",
-                "hint": "Tracks when a character changes ability scores."
+                "name": "Отслеживать характеристики",
+                "hint": "Отслеживает изменение значений характеристик персонажа."
             },
             "monitorSheetMode": {
-                "name": "Monitor Sheet Mode Toggle",
-                "hint": "Tracks when character sheet toggles between Play and Edit modes."
+                "name": "Отслеживать режим листа",
+                "hint": "Отслеживает переключение листа персонажа между режимами игры и редактирования."
             },
             "showGMonly": {
-                "name": "Display Character Monitor to GM Users only",
-                "hint": "Chat messages can be revealed to players using context menu."
+                "name": "Показывать монитор персонажа только GM",
+                "hint": "Сообщения чата могут быть показаны игрокам через контекстное меню."
             },
             "allowPlayerView": {
-                "name": "Allow players to see their own messages",
-                "hint": "If GM-only mode is enabled, this setting allows players to still see their own monitor messages."
+                "name": "Разрешить игрокам видеть свои сообщения",
+                "hint": "Если включен режим только для GM, эта настройка позволяет игрокам видеть свои собственные сообщения монитора."
             },
             "showToggle": {
-                "name": "Show Character Monitor Toggle",
-                "hint": "Temporarily disable Character Monitor by toggling off the control button on the token toolbar. The control button is only visible to GM users."
+                "name": "Показывать переключатель монитора персонажа",
+                "hint": "Временно отключить монитор персонажа, выключив кнопку управления на панели инструментов токена. Кнопка управления видна только пользователям GM."
             },
             "trashIcon": {
-                "name": "Enable Health Monitor Chat Message Trash Icon"
+                "name": "Включить иконку корзины в сообщениях монитора здоровья"
             },
             "useTokenName": {
-                "name": "Use Token Name",
-                "hint": "For unlinked tokens, token name will be used. For linked tokens, prototype token name will be used."
+                "name": "Использовать имя токена",
+                "hint": "Для несвязанных токенов будет использоваться имя токена. Для связанных токенов будет использоваться имя прототипа токена."
             },
             "hideNPCs": {
-                "name": "Hide NPC Health Log from Players",
-                "hint": "GM users can reveal chat messages to players using context menu"
+                "name": "Скрыть журнал здоровья NPC от игроков",
+                "hint": "Пользователи GM могут показывать сообщения чата игрокам через контекстное меню"
             },
             "hideNPCname": {
-                "name": "Hide NPC Name",
-                "hint": "Replaces NPC name with text set below."
+                "name": "Скрыть имя NPC",
+                "hint": "Заменяет имя NPC текстом, указанным ниже."
             },
             "replacementName": {
-                "name": "Hidden NPC Name Replacement",
-                "hint": "If above setting is enabled, NPC name will be replaced with text entered here."
+                "name": "Замена скрытого имени NPC",
+                "hint": "Если включена настройка выше, имя NPC будет заменено введенным здесь текстом."
             }
         },
         "control": {
-            "title": "Toggle Character Monitor"
+            "title": "Переключить монитор персонажа"
         },
         "chatMessage": {
             "hp": {
                 "value": "HP",
-                "max": "Max HP",
-                "temp": "Temp HP"
+                "max": "Макс HP",
+                "temp": "Врем HP"
             },
-            "equipped": "equipped",
-            "unequipped": "unequipped",
-            "prepared": "prepared",
-            "unprepared": "unprepared",
-            "aSpell": "a spell",
-            "uses": "uses",
-            "attunesTo": "attunes to an item",
-            "breaksAttune": "breaks attunement to an item",
-            "SpellSlots": "Spell Slots",
-            "enabled": "enabled",
-            "disabled": "disabled",
+            "equipped": "надето",
+            "unequipped": "снято",
+            "prepared": "подготовлено",
+            "unprepared": "не подготовлено",
+            "aSpell": "заклинание",
+            "uses": "использований",
+            "attunesTo": "настраивается на предмет",
+            "breaksAttune": "теряет настройку на предмет",
+            "SpellSlots": "Ячейки заклинаний",
+            "enabled": "включено",
+            "disabled": "отключено",
             "duration": {
-                "seconds": "seconds",
-                "startTime": "start time",
-                "rounds": "rounds",
-                "turns": "turns",
-                "startRound": "start round",
-                "startTurn": "start turn"
+                "seconds": "секунд",
+                "startTime": "время начала",
+                "rounds": "раундов",
+                "turns": "ходов",
+                "startRound": "начальный раунд",
+                "startTurn": "начальный ход"
             },
             "effects": {
-                "label": "label",
-                "mode": "mode",
-                "value": "value"
+                "label": "метка",
+                "mode": "режим",
+                "value": "значение"
             },
-            "sheetMode": "Sheet Mode"
+            "sheetMode": "Режим листа"
         },
         "colorMenu": {
-            "hpPlus": "HP Increases",
-            "hpMinus": "HP Decreases",
-            "on": "Equip/Prepare/Attune",
-            "off": "Unequip/Unprepare/Break Attunement"
+            "hpPlus": "Увеличение HP",
+            "hpMinus": "Уменьшение HP",
+            "on": "Надеть/Подготовить/Настроить",
+            "off": "Снять/Убрать/Потерять настройку"
         }
     },
     "healthMonitor": {
         "control": {
-            "title": "Toggle Health Monitor"
+            "title": "Переключить монитор здоровья"
         },
         "chatMessage": {
-            "heals": "heals",
-            "takes": "takes",
-            "damage": "damage",
-            "gains": "gains",
-            "loses": "loses",
-            "maxHP": "max HP",
-            "Immunity": "Immunity",
-            "Resistance": "Resistance",
-            "Vulnerability": "Vulnerability"
+            "heals": "лечит",
+            "takes": "получает",
+            "damage": "урон",
+            "gains": "получает",
+            "loses": "теряет",
+            "maxHP": "макс HP",
+            "Immunity": "Иммунитет",
+            "Resistance": "Сопротивление",
+            "Vulnerability": "Уязвимость"
         }
     }
 }

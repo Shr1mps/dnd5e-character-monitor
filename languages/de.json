@@ -2,149 +2,149 @@
     "characterMonitor": {
         "settings": {
             "cmColorsMenu": {
-                "name": "Customize Character Monitor Colors",
-                "label": "Customize"
+                "name": "Charakter-Monitor Farben anpassen",
+                "label": "Anpassen"
             },
             "monitorHP": {
-                "name": "Monitor HP",
-                "hint": "Tracks when a character's or NPC's HP changes."
+                "name": "LP überwachen",
+                "hint": "Verfolgt, wenn sich die LP eines Charakters oder NSCs ändern."
             },
             "monitorEquip": {
-                "name": "Monitor Equipment",
-                "hint": "Tracks when a character equips/unequips equipment."
+                "name": "Ausrüstung überwachen",
+                "hint": "Verfolgt, wenn ein Charakter Ausrüstung anlegt/ablegt."
             },
             "monitorQuantity": {
-                "name": "Monitor Quantity",
-                "hint": "Tracks when a character's item changes quantity."
+                "name": "Menge überwachen",
+                "hint": "Verfolgt, wenn sich die Menge eines Gegenstands ändert."
             },
             "monitorAttune": {
-                "name": "Monitor Attunement",
-                "hint": "Tracks when a character attunes to equipment or breaks attunement."
+                "name": "Einstimmung überwachen",
+                "hint": "Verfolgt, wenn sich ein Charakter auf einen Gegenstand einstimmt oder die Einstimmung löst."
             },
             "monitorSpellPrep": {
-                "name": "Monitor Spell Preparation",
-                "hint": "Tracks when a character prepares/unprepares a spell."
+                "name": "Zaubervorbereitung überwachen",
+                "hint": "Verfolgt, wenn ein Charakter einen Zauber vorbereitet/nicht mehr vorbereitet."
             },
             "monitorSpellSlots": {
-                "name": "Monitor Spell Slots",
-                "hint": "Tracks when a character changes spell slot counts on their character sheet."
+                "name": "Zauberplätze überwachen",
+                "hint": "Verfolgt, wenn ein Charakter die Anzahl der Zauberplätze auf seinem Bogen ändert."
             },
             "monitorFeats": {
-                "name": "Monitor Features",
-                "hint": "Tracks when a character changes feature use counts on their character sheet."
+                "name": "Merkmale überwachen",
+                "hint": "Verfolgt, wenn ein Charakter die Nutzungsanzahl von Merkmalen auf seinem Bogen ändert."
             },
             "monitorResources": {
-                "name": "Monitor Resources",
-                "hint": "Tracks when a character changes resources values counts on their character sheet."
+                "name": "Ressourcen überwachen",
+                "hint": "Verfolgt, wenn ein Charakter Ressourcenwerte auf seinem Bogen ändert."
             },
             "monitorActiveEffects": {
-                "name": "Monitor Active Effects",
-                "hint": "Tracks when a character changes active effects on their character sheet."
+                "name": "Aktive Effekte überwachen",
+                "hint": "Verfolgt, wenn ein Charakter aktive Effekte auf seinem Bogen ändert."
             },
             "monitorCurrency": {
-                "name": "Monitor Currency",
-                "hint": "Tracks when a character changes currency on their character sheet."
+                "name": "Währung überwachen",
+                "hint": "Verfolgt, wenn ein Charakter die Währung auf seinem Bogen ändert."
             },
             "monitorProficiency": {
-                "name": "Monitor Skill Proficiency",
-                "hint": "Tracks when a character changes skill proficiency."
+                "name": "Fertigkeitsübung überwachen",
+                "hint": "Verfolgt, wenn ein Charakter seine Fertigkeitsübung ändert."
             },
             "monitorAbility": {
-                "name": "Monitor Ability Scores",
-                "hint": "Tracks when a character changes ability scores."
+                "name": "Attributswerte überwachen",
+                "hint": "Verfolgt, wenn ein Charakter seine Attributswerte ändert."
             },
             "monitorSheetMode": {
-                "name": "Monitor Sheet Mode Toggle",
-                "hint": "Tracks when character sheet toggles between Play and Edit modes."
+                "name": "Bogen-Modus überwachen",
+                "hint": "Verfolgt, wenn der Charakterbogen zwischen Spiel- und Bearbeitungsmodus wechselt."
             },
             "showGMonly": {
-                "name": "Display Character Monitor to GM Users only",
-                "hint": "Chat messages can be revealed to players using context menu."
+                "name": "Charakter-Monitor nur für Spielleiter anzeigen",
+                "hint": "Chat-Nachrichten können Spielern über das Kontextmenü angezeigt werden."
             },
             "allowPlayerView": {
-                "name": "Allow players to see their own messages",
-                "hint": "If GM-only mode is enabled, this setting allows players to still see their own monitor messages."
+                "name": "Spielern erlauben, ihre eigenen Nachrichten zu sehen",
+                "hint": "Wenn der Nur-SL-Modus aktiviert ist, erlaubt diese Einstellung Spielern trotzdem, ihre eigenen Monitor-Nachrichten zu sehen."
             },
             "showToggle": {
-                "name": "Show Character Monitor Toggle",
-                "hint": "Temporarily disable Character Monitor by toggling off the control button on the token toolbar. The control button is only visible to GM users."
+                "name": "Charakter-Monitor Schalter anzeigen",
+                "hint": "Deaktiviert den Charakter-Monitor vorübergehend, indem der Kontrollknopf in der Token-Symbolleiste ausgeschaltet wird. Der Kontrollknopf ist nur für Spielleiter sichtbar."
             },
             "trashIcon": {
-                "name": "Enable Health Monitor Chat Message Trash Icon"
+                "name": "Papierkorb-Symbol in Gesundheits-Monitor Chat-Nachrichten aktivieren"
             },
             "useTokenName": {
-                "name": "Use Token Name",
-                "hint": "For unlinked tokens, token name will be used. For linked tokens, prototype token name will be used."
+                "name": "Token-Namen verwenden",
+                "hint": "Für nicht verknüpfte Token wird der Token-Name verwendet. Für verknüpfte Token wird der Prototyp-Token-Name verwendet."
             },
             "hideNPCs": {
-                "name": "Hide NPC Health Log from Players",
-                "hint": "GM users can reveal chat messages to players using context menu"
+                "name": "NSC-Gesundheitsprotokoll vor Spielern verbergen",
+                "hint": "Spielleiter können Chat-Nachrichten Spielern über das Kontextmenü anzeigen"
             },
             "hideNPCname": {
-                "name": "Hide NPC Name",
-                "hint": "Replaces NPC name with text set below."
+                "name": "NSC-Namen verbergen",
+                "hint": "Ersetzt den NSC-Namen durch den unten festgelegten Text."
             },
             "replacementName": {
-                "name": "Hidden NPC Name Replacement",
-                "hint": "If above setting is enabled, NPC name will be replaced with text entered here."
+                "name": "Ersatz für verborgenen NSC-Namen",
+                "hint": "Wenn die obige Einstellung aktiviert ist, wird der NSC-Name durch den hier eingegebenen Text ersetzt."
             }
         },
         "control": {
-            "title": "Toggle Character Monitor"
+            "title": "Charakter-Monitor umschalten"
         },
         "chatMessage": {
             "hp": {
-                "value": "HP",
-                "max": "Max HP",
-                "temp": "Temp HP"
+                "value": "LP",
+                "max": "Max LP",
+                "temp": "Temp LP"
             },
-            "equipped": "equipped",
-            "unequipped": "unequipped",
-            "prepared": "prepared",
-            "unprepared": "unprepared",
-            "aSpell": "a spell",
-            "uses": "uses",
-            "attunesTo": "attunes to an item",
-            "breaksAttune": "breaks attunement to an item",
-            "SpellSlots": "Spell Slots",
-            "enabled": "enabled",
-            "disabled": "disabled",
+            "equipped": "angelegt",
+            "unequipped": "abgelegt",
+            "prepared": "vorbereitet",
+            "unprepared": "nicht vorbereitet",
+            "aSpell": "einen Zauber",
+            "uses": "Nutzungen",
+            "attunesTo": "stimmt sich auf einen Gegenstand ein",
+            "breaksAttune": "löst die Einstimmung auf einen Gegenstand",
+            "SpellSlots": "Zauberplätze",
+            "enabled": "aktiviert",
+            "disabled": "deaktiviert",
             "duration": {
-                "seconds": "seconds",
-                "startTime": "start time",
-                "rounds": "rounds",
-                "turns": "turns",
-                "startRound": "start round",
-                "startTurn": "start turn"
+                "seconds": "Sekunden",
+                "startTime": "Startzeit",
+                "rounds": "Runden",
+                "turns": "Züge",
+                "startRound": "Startrunde",
+                "startTurn": "Startzug"
             },
             "effects": {
-                "label": "label",
-                "mode": "mode",
-                "value": "value"
+                "label": "Bezeichnung",
+                "mode": "Modus",
+                "value": "Wert"
             },
-            "sheetMode": "Sheet Mode"
+            "sheetMode": "Bogen-Modus"
         },
         "colorMenu": {
-            "hpPlus": "HP Increases",
-            "hpMinus": "HP Decreases",
-            "on": "Equip/Prepare/Attune",
-            "off": "Unequip/Unprepare/Break Attunement"
+            "hpPlus": "LP Erhöhungen",
+            "hpMinus": "LP Verringerungen",
+            "on": "Anlegen/Vorbereiten/Einstimmen",
+            "off": "Ablegen/Nicht vorbereiten/Einstimmung lösen"
         }
     },
     "healthMonitor": {
         "control": {
-            "title": "Toggle Health Monitor"
+            "title": "Gesundheits-Monitor umschalten"
         },
         "chatMessage": {
-            "heals": "heals",
-            "takes": "takes",
-            "damage": "damage",
-            "gains": "gains",
-            "loses": "loses",
-            "maxHP": "max HP",
-            "Immunity": "Immunity",
-            "Resistance": "Resistance",
-            "Vulnerability": "Vulnerability"
+            "heals": "heilt",
+            "takes": "erleidet",
+            "damage": "Schaden",
+            "gains": "erhält",
+            "loses": "verliert",
+            "maxHP": "Max LP",
+            "Immunity": "Immunität",
+            "Resistance": "Resistenz",
+            "Vulnerability": "Anfälligkeit"
         }
     }
 }
