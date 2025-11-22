@@ -76,6 +76,66 @@ describe('ActorMonitor', () => {
             })
         );
     });
+
+    test('should detect XP change', async () => {
+        const diff = { system: { details: { xp: { value: 1000 } } } };
+        actor.system.details = { xp: { value: 500 } };
+        
+        await monitor.onPreUpdateActor(actor, diff, {}, 'gamemaster');
+
+        expect(Logger.log).toHaveBeenCalledWith(
+            'XP',
+            'xp.hbs',
+            expect.objectContaining({
+                xp: { value: 1000, old: 500 }
+            })
+        );
+    });
+
+    test('should detect Level change', async () => {
+        const diff = { system: { details: { level: 2 } } };
+        actor.system.details = { level: 1 };
+        
+        await monitor.onPreUpdateActor(actor, diff, {}, 'gamemaster');
+
+        expect(Logger.log).toHaveBeenCalledWith(
+            'Level',
+            'level.hbs',
+            expect.objectContaining({
+                level: { value: 2, old: 1 }
+            })
+        );
+    });
+
+    test('should detect Ability change', async () => {
+        const diff = { system: { abilities: { str: { value: 18 } } } };
+        actor.system.abilities = { str: { value: 16 } };
+        
+        await monitor.onPreUpdateActor(actor, diff, {}, 'gamemaster');
+
+        expect(Logger.log).toHaveBeenCalledWith(
+            'Ability',
+            'ability.hbs',
+            expect.objectContaining({
+                ability: expect.objectContaining({ value: 18, old: 16 })
+            })
+        );
+    });
+
+    test('should detect AC change', async () => {
+        const diff = { system: { attributes: { ac: { flat: 15 } } } };
+        actor.system.attributes.ac = { flat: 10 };
+        
+        await monitor.onPreUpdateActor(actor, diff, {}, 'gamemaster');
+
+        expect(Logger.log).toHaveBeenCalledWith(
+            'AC',
+            'ac.hbs',
+            expect.objectContaining({
+                ac: { value: 15, old: 10 }
+            })
+        );
+    });
 });
 
 describe('ItemMonitor', () => {

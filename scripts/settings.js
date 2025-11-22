@@ -157,7 +157,11 @@ class CharacterMonitorColorMenu extends FormApplication {
             currency: { color: settingsData.currency, label: game.i18n.localize('DND5E.Currency') },
             proficiency: { color: settingsData.proficiency, label: game.i18n.localize('DND5E.Proficiency') },
             sheetMode: { color: settingsData.sheetMode, label: game.i18n.localize('characterMonitor.chatMessage.sheetMode') },
-            effects: { color: settingsData.effects, label: 'Active Effects' } // Added Effects
+            effects: { color: settingsData.effects, label: 'Active Effects' },
+            xp: { color: settingsData.xp, label: 'XP' },
+            level: { color: settingsData.level, label: 'Level' },
+            ability: { color: settingsData.ability, label: game.i18n.localize('DND5E.Ability') },
+            ac: { color: settingsData.ac, label: game.i18n.localize('DND5E.ArmorClass') }
         };
         return data;
     }

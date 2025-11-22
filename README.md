@@ -1,23 +1,58 @@
-![All Downloads](https://img.shields.io/github/downloads/jessev14/dnd5e-character-monitor/total?style=for-the-badge)
+# D&D5e Character Monitor
 
-![Latest Release Download Count](https://img.shields.io/github/downloads/jessev14/dnd5e-character-monitor/latest/CM.zip)
-[![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fdnd5e-character-monitor&colorB=4aa94a)](https://forge-vtt.com/bazaar#package=dnd5e-character-monitor)
+![GitHub issues](https://img.shields.io/github/issues-raw/Shr1mps/dnd5e-character-monitor?style=for-the-badge)
+![Latest Release Download Count](https://img.shields.io/github/downloads/Shr1mps/dnd5e-character-monitor/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge)
+![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FShr1mps%2Fdnd5e-character-monitor%2Fmaster%2Fmodule.json&label=Foundry%20Version&query=$.compatibility.verified&colorB=orange&style=for-the-badge)
+![Latest Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FShr1mps%2Fdnd5e-character-monitor%2Fmaster%2Fmodule.json&label=Latest%20Release&prefix=v&query=$.version&colorB=red&style=for-the-badge)
+![GitHub all releases](https://img.shields.io/github/downloads/Shr1mps/dnd5e-character-monitor/total?style=for-the-badge)
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/jessev14)
+Log an alert in chat when certain changes to an actor are made.
 
-# Character Monitor
+## Installation
 
-For dnd5e.
+It's always easiest to install modules from the in game add-on browser.
 
-When one of the following changes is made via the **character sheet**, a log will be made in chat. The colors can be customized in the module settings.
+To install this module manually:
+1.  Inside the Foundry "Configuration and Setup" screen, click "Add-on Modules"
+2.  Click "Install Module"
+3.  In the "Manifest URL" field, paste the following url:
+`https://github.com/Shr1mps/dnd5e-character-monitor/releases/latest/download/module.json`
+4.  Click 'Install' and wait for installation to complete
+5.  Don't forget to enable the module in game using the "Manage Module" button
 
-* Equip/Unequip an item
-* Change item quantity
-* Attune to / Break attunement to a magical item
-* Prepare/Unprepare a spell
-* Change number spell slots
-* Change number of feature usage
-* Change resource values
-* Active effects changes
+## Feature Overview
+
+When one of the following changes is made via the **character sheet**, a log will be made in chat.
+
+*   **Equip/Unequip** an item
+*   **Change item quantity**
+*   **Attune/Break attunement** to a magical item
+*   **Prepare/Unprepare** a spell
+*   **Change number of spell slots**
+*   **Change number of feature usages**
+*   **Change resource values**
+*   **Active effects changes** (Created, Deleted, Toggled)
+*   **Experience Points (XP)** (Added/Removed)
+*   **Character Level** (Level Up/Down)
+*   **Ability Scores** (Strength, Dexterity, etc.)
+*   **Armor Class (AC)** (Manual changes)
 
 <img src="/img/character-monitor.png">
+
+### Settings Menu
+
+You can customize the colors for each type of notification in the module settings. You can also toggle specific monitors on or off if you only want to track certain changes (e.g., only Currency and XP).
+
+## Issues
+
+Any issues, bugs, or feature requests are always welcome to be reported directly to the [Issue Tracker](https://github.com/Shr1mps/dnd5e-character-monitor/issues).
+
+## License
+
+This package is under an [MIT](LICENSE) license and the [Foundry Virtual Tabletop Limited License Agreement for module development](https://foundryvtt.com/article/license/).
+
+## Acknowledgements
+
+-   Original module by **enso** (`enso#0361`).
+-   Previously maintained by **jessev14**.
+-   Currently maintained by **Shr1mps**.

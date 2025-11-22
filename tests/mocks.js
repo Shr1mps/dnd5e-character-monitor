@@ -41,7 +41,8 @@ global.CONFIG = {
     DND5E: {
         spellLevels: { 1: '1st Level' },
         skills: { acr: { label: 'Acrobatics' } },
-        proficiencyLevels: { 1: 'Proficient' }
+        proficiencyLevels: { 1: 'Proficient' },
+        abilities: { str: { label: 'Strength' } }
     }
 };
 

@@ -18,6 +18,10 @@ export class ActorMonitor extends BaseMonitor {
         await this.checkSpellSlots(actor, diff);
         await this.checkCurrency(actor, diff);
         await this.checkProficiency(actor, diff);
+        await this.checkXP(actor, diff);
+        await this.checkLevel(actor, diff);
+        await this.checkAbility(actor, diff);
+        await this.checkAC(actor, diff);
     }
 
     async onUpdateActor(actor, diff, options, userID) {
@@ -128,5 +132,90 @@ export class ActorMonitor extends BaseMonitor {
                 }
             }
         }
+    }
+
+    async checkXP(actor, diff) {
+        if (!Settings.get(`monitor${MONITOR_TYPES.XP}`) || !('xp' in (diff.system?.details || {}))) return;
+
+        const newXP = diff.system.details.xp.value;
+        const oldXP = actor.system.details.xp.value;
+        if (newXP === oldXP) return;
+
+        const templateData = {
+            characterName: this.getCharacterName(actor),
+            xp: {
+                value: newXP,
+                old: oldXP
+            },
+            showPrevious: Settings.get('showPrevious')
+        };
+
+        await Logger.log(MONITOR_TYPES.XP, 'xp.hbs', templateData);
+    }
+
+    async checkLevel(actor, diff) {
+        if (!Settings.get(`monitor${MONITOR_TYPES.LEVEL}`) || !('level' in (diff.system?.details || {}))) return;
+
+        const newLevel = diff.system.details.level;
+        const oldLevel = actor.system.details.level;
+        if (newLevel === oldLevel) return;
+
+        const templateData = {
+            characterName: this.getCharacterName(actor),
+            level: {
+                value: newLevel,
+                old: oldLevel
+            },
+            showPrevious: Settings.get('showPrevious')
+        };
+
+        await Logger.log(MONITOR_TYPES.LEVEL, 'level.hbs', templateData);
+    }
+
+    async checkAbility(actor, diff) {
+        if (!Settings.get(`monitor${MONITOR_TYPES.ABILITY}`) || !('abilities' in (diff.system || {}))) return;
+
+        for (const [abil, changes] of Object.entries(diff.system.abilities)) {
+            if (!('value' in changes)) continue;
+
+            const oldValue = actor.system.abilities[abil].value;
+            const newValue = changes.value;
+            if (oldValue === newValue) continue;
+
+            const templateData = {
+                characterName: this.getCharacterName(actor),
+                ability: {
+                    label: CONFIG.DND5E.abilities[abil].label,
+                    value: newValue,
+                    old: oldValue
+                },
+                showPrevious: Settings.get('showPrevious')
+            };
+
+            await Logger.log(MONITOR_TYPES.ABILITY, 'ability.hbs', templateData);
+        }
+    }
+
+    async checkAC(actor, diff) {
+        if (!Settings.get(`monitor${MONITOR_TYPES.AC}`) || !('ac' in (diff.system?.attributes || {}))) return;
+        
+        const acChanges = diff.system.attributes.ac;
+        if (!('flat' in acChanges)) return;
+        
+        const newValue = acChanges.flat;
+        const oldValue = actor.system.attributes.ac.flat;
+        
+        if (newValue === oldValue) return;
+
+        const templateData = {
+            characterName: this.getCharacterName(actor),
+            ac: {
+                value: newValue,
+                old: oldValue
+            },
+            showPrevious: Settings.get('showPrevious')
+        };
+
+        await Logger.log(MONITOR_TYPES.AC, 'ac.hbs', templateData);
     }
 }

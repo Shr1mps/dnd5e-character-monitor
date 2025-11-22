@@ -1,0 +1,10 @@
+<div class="dnd5e-cm-message">
+    <div class="dnd5e-cm-header">{{characterName}}</div>
+    <div class="dnd5e-cm-content">
+        {{localize "DND5E.ExperiencePoints"}}: 
+        {{#if showPrevious}}
+            <span class="dnd5e-cm-previous">{{xp.old}}</span> <i class="fas fa-arrow-right"></i>
+        {{/if}}
+        <span class="dnd5e-cm-value">{{xp.value}}</span>
+    </div>
+</div>

@@ -11,7 +11,11 @@ export const MONITOR_TYPES = {
     CURRENCY: 'Currency',
     PROFICIENCY: 'Proficiency',
     SHEET_MODE: 'SheetMode',
-    EFFECTS: 'Effects' // Added for Active Effects
+    EFFECTS: 'Effects',
+    XP: 'XP',
+    LEVEL: 'Level',
+    ABILITY: 'Ability',
+    AC: 'AC'
 };
 
 export const DEFAULT_COLORS = {
@@ -25,5 +29,8 @@ export const DEFAULT_COLORS = {
     currency: '#b59b3c',
     proficiency: '#37908a',
     ability: '#37908a',
-    sheetMode: '#000000'
+    sheetMode: '#000000',
+    xp: '#b59b3c',
+    level: '#b59b3c',
+    ac: '#37908a'
 };
