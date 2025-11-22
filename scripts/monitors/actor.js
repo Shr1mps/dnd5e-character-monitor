@@ -1,0 +1,132 @@
+import { BaseMonitor } from './base.js';
+import { Settings } from '../settings.js';
+import { Logger } from '../logger.js';
+import * as Config from '../config.js';
+const { MODULE_ID, MONITOR_TYPES } = Config;
+
+export class ActorMonitor extends BaseMonitor {
+    init() {
+        Hooks.on('preUpdateActor', this.onPreUpdateActor.bind(this));
+        Hooks.on('updateActor', this.onUpdateActor.bind(this));
+    }
+
+    async onPreUpdateActor(actor, diff, options, userID) {
+        if (actor.type !== 'character') return;
+        if (game.system.id === 'dnd5e' && "isAdvancement" in options) return;
+        if (!this.shouldMonitor(actor)) return;
+
+        await this.checkSpellSlots(actor, diff);
+        await this.checkCurrency(actor, diff);
+        await this.checkProficiency(actor, diff);
+    }
+
+    async onUpdateActor(actor, diff, options, userID) {
+        if (!Settings.get(`monitor${MONITOR_TYPES.HP}`)) return;
+        if (!this.shouldMonitor(actor)) return;
+
+        if (diff.system?.attributes?.hp) {
+            await this.checkHP(actor, diff, options, userID);
+        }
+    }
+
+    async checkSpellSlots(actor, diff) {
+        if (!Settings.get(`monitor${MONITOR_TYPES.SPELL_SLOTS}`) || !('spells' in (diff.system || {}))) return;
+
+        for (const [spellLevel, newSpellData] of Object.entries(diff.system.spells)) {
+            const oldSpellData = actor.system.spells[spellLevel];
+            const hasValue = ("value" in newSpellData);
+            const hasMax = ("override" in newSpellData) || ("max" in newSpellData);
+            if (!hasValue && !hasMax) continue;
+
+            const newMax = newSpellData.override ?? newSpellData.max;
+            const isValueUnchanged = (!hasValue || (!newSpellData.value && !oldSpellData.value));
+            const isMaxUnchanged = (!hasMax || (!newMax && !oldSpellData.max));
+            if (isValueUnchanged && isMaxUnchanged) continue;
+
+            const levelNum = parseInt(spellLevel.slice(-1));
+            const templateData = {
+                characterName: this.getCharacterName(actor),
+                spellSlot: {
+                    label: CONFIG.DND5E.spellLevels[levelNum],
+                    value: (hasValue ? newSpellData.value : oldSpellData.value) || 0,
+                    max: (newMax ?? oldSpellData.max) || 0
+                }
+            };
+            if (Settings.get('showPrevious')) templateData.spellSlot.old = oldSpellData.value;
+
+            await Logger.log('slots', 'spellSlots.hbs', templateData);
+        }
+    }
+
+    async checkCurrency(actor, diff) {
+        if (!Settings.get(`monitor${MONITOR_TYPES.CURRENCY}`) || !('currency' in (diff.system || {}))) return;
+
+        for (const [currency, newValue] of Object.entries(diff.system.currency)) {
+            const oldValue = actor.system.currency[currency];
+            if (newValue === null || newValue == oldValue) continue;
+
+            const templateData = {
+                characterName: this.getCharacterName(actor),
+                currency: {
+                    label: currency,
+                    value: newValue
+                }
+            };
+            if (Settings.get('showPrevious')) templateData.currency.old = oldValue;
+
+            await Logger.log('currency', 'currency.hbs', templateData);
+        }
+    }
+
+    async checkProficiency(actor, diff) {
+        if (!Settings.get(`monitor${MONITOR_TYPES.PROFICIENCY}`) || !('skills' in (diff.system || {}))) return;
+
+        for (const [skl, changes] of Object.entries(diff.system.skills)) {
+            if (!('value' in changes) || typeof changes.value !== 'number') continue;
+
+            const oldValue = actor.system.skills[skl].value;
+            if (oldValue === changes.value) continue;
+
+            const templateData = {
+                characterName: this.getCharacterName(actor),
+                proficiency: {
+                    label: CONFIG.DND5E.skills[skl].label,
+                    value: CONFIG.DND5E.proficiencyLevels[changes.value]
+                }
+            };
+
+            await Logger.log('proficiency', 'proficiency.hbs', templateData);
+        }
+    }
+
+    async checkHP(actor, diff, options, userID) {
+        const previousData = options.dnd5e?.hp || options.previous?.system?.attributes?.hp; // V13 compatibility check: dnd5e might change how it stores previous data, but usually it's in options.dnd5e.hp or we can rely on preUpdate if we tracked it.
+        // Actually, in v12/v13 options.dnd5e.hp is reliable for dnd5e system.
+        
+        if (!previousData) return;
+
+        const data = {
+            previous: Settings.get('showPrevious'),
+            characterName: this.getCharacterName(actor)
+        };
+
+        for (const healthType of ['value', 'max', 'temp']) {
+            const value = actor.system.attributes.hp[healthType];
+            const previousValue = previousData[healthType];
+            const delta = value - previousValue;
+            
+            if (delta) {
+                const direction = delta > 0 ? 'Plus' : 'Minus';
+                data.type = game.i18n.localize(`characterMonitor.chatMessage.hp.${healthType}`, { [MODULE_ID]: { monitorType: `hp${direction}` } });
+                data.direction = direction;
+                data.value = value;
+                data.previousValue = previousValue;
+
+                // Only the user who triggered the update should send the message to avoid duplicates
+                if (game.user.id === userID) {
+                     await Logger.log(`hp${direction}`, 'hp.hbs', data);
+                }
+            }
+        }
+    }
+}

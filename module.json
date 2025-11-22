@@ -11,7 +11,7 @@
     ],
     "compatibility": {
         "minimum": "12",
-        "verified": "12"
+        "verified": "13"
     },
     "relationships": {
         "systems": [
@@ -43,7 +43,7 @@
         ]
     },
     "esmodules": [
-        "./scripts/dnd5e-character-monitor.js"
+        "./scripts/main.js"
     ],
     "styles": [
         "./styles/dnd5e-character-monitor.css"
