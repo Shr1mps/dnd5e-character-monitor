@@ -1,4 +1,4 @@
-export const MODULE_ID = 'dnd5e-character-monitor';
+export const MODULE_ID = 'shr1mps-character-monitor';
 
 export const MONITOR_TYPES = {
     HP: 'HP',
