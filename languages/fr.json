@@ -37,7 +37,7 @@
                 "name": "Surveiller les ressources",
                 "hint": "Suit quand un personnage change les valeurs de ressources sur sa fiche."
             },
-            "monitorActiveEffects": {
+            "monitorEffects": {
                 "name": "Surveiller les effets actifs",
                 "hint": "Suit quand un personnage change les effets actifs sur sa fiche."
             },
@@ -57,7 +57,7 @@
                 "name": "Surveiller le mode de fiche",
                 "hint": "Suit quand la fiche de personnage bascule entre les modes Jeu et Édition."
             },
-            "showGMonly": {
+            "showGMOnly": {
                 "name": "Afficher le moniteur de personnage uniquement aux MJ",
                 "hint": "Les messages de chat peuvent être révélés aux joueurs via le menu contextuel."
             },
@@ -68,6 +68,12 @@
             "showToggle": {
                 "name": "Afficher le bouton du moniteur de personnage",
                 "hint": "Désactiver temporairement le moniteur de personnage en désactivant le bouton de contrôle sur la barre d'outils des jetons. Le bouton de contrôle n'est visible que pour les MJ."
+            },
+            "showPrevious": {
+                "name": "Afficher les valeurs précédentes"
+            },
+            "cmToggle": {
+                "name": "Basculer le moniteur de caractères"
             },
             "trashIcon": {
                 "name": "Activer l'icône de corbeille pour les messages de santé"
