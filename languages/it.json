@@ -37,7 +37,7 @@
                 "name": "Monitora Risorse",
                 "hint": "Traccia quando un personaggio cambia i valori delle risorse sulla sua scheda."
             },
-            "monitorActiveEffects": {
+            "monitorEffects": {
                 "name": "Monitora Effetti Attivi",
                 "hint": "Traccia quando un personaggio cambia gli effetti attivi sulla sua scheda."
             },
@@ -57,7 +57,7 @@
                 "name": "Monitora Modalità Scheda",
                 "hint": "Traccia quando la scheda del personaggio passa tra le modalità Gioco e Modifica."
             },
-            "showGMonly": {
+            "showGMOnly": {
                 "name": "Mostra Monitor Personaggio solo ai GM",
                 "hint": "I messaggi di chat possono essere rivelati ai giocatori usando il menu contestuale."
             },
@@ -68,6 +68,12 @@
             "showToggle": {
                 "name": "Mostra Interruttore Monitor Personaggio",
                 "hint": "Disabilita temporaneamente il Monitor Personaggio spegnendo il pulsante di controllo sulla barra degli strumenti dei token. Il pulsante di controllo è visibile solo ai GM."
+            },
+            "showPrevious": {
+                "name": "Mostra valori precedenti"
+            },
+            "cmToggle": {
+                "name": "Attiva/disattiva il monitor dei caratteri"
             },
             "trashIcon": {
                 "name": "Abilita Icona Cestino nei Messaggi Chat Monitor Salute"

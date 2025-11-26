@@ -37,7 +37,7 @@
                 "name": "Monitorear Recursos",
                 "hint": "Rastrea cuando un personaje cambia los valores de recursos en su hoja."
             },
-            "monitorActiveEffects": {
+            "monitorEffects": {
                 "name": "Monitorear Efectos Activos",
                 "hint": "Rastrea cuando un personaje cambia efectos activos en su hoja."
             },
@@ -57,7 +57,7 @@
                 "name": "Monitorear Modo de Hoja",
                 "hint": "Rastrea cuando la hoja de personaje cambia entre modos Juego y Edición."
             },
-            "showGMonly": {
+            "showGMOnly": {
                 "name": "Mostrar Monitor de Personajes solo a usuarios GM",
                 "hint": "Los mensajes de chat pueden ser revelados a los jugadores usando el menú contextual."
             },
@@ -68,6 +68,12 @@
             "showToggle": {
                 "name": "Mostrar Interruptor del Monitor de Personajes",
                 "hint": "Deshabilitar temporalmente el Monitor de Personajes apagando el botón de control en la barra de herramientas de tokens. El botón de control solo es visible para usuarios GM."
+            },
+            "showPrevious": {
+                "name": "Mostrar valores anteriores"
+            },
+            "cmToggle": {
+                "name": "Alternar monitor de caracteres"
             },
             "trashIcon": {
                 "name": "Habilitar Icono de Papelera en Mensajes de Chat del Monitor de Salud"

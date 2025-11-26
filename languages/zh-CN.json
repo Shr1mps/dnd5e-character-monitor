@@ -37,7 +37,7 @@
                 "name": "监控资源",
                 "hint": "追踪角色卡上资源数值的变化。"
             },
-            "monitorActiveEffects": {
+            "monitorEffects": {
                 "name": "监控主动效果",
                 "hint": "追踪角色卡上主动效果的变化。"
             },
@@ -57,7 +57,7 @@
                 "name": "监控角色卡模式切换",
                 "hint": "追踪角色卡在游戏和编辑模式之间的切换。"
             },
-            "showGMonly": {
+            "showGMOnly": {
                 "name": "仅向GM用户显示角色监控",
                 "hint": "可以使用上下文菜单向玩家显示聊天消息。"
             },
@@ -68,6 +68,12 @@
             "showToggle": {
                 "name": "显示角色监控开关",
                 "hint": "通过关闭标记工具栏上的控制按钮暂时禁用角色监控。控制按钮仅对GM用户可见。"
+            },
+            "showPrevious": {
+                "name": "显示先前的值"
+            },
+            "cmToggle": {
+                "name": "切换字符监视器"
             },
             "trashIcon": {
                 "name": "启用健康监控聊天消息垃圾桶图标"

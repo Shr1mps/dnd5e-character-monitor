@@ -23,4 +23,15 @@ export class BaseMonitor {
         // Add other common checks if needed
         return true;
     }
+
+    async runParallel(promises) {
+        const results = await Promise.allSettled(promises);
+
+        results.forEach((r, idx) => {
+            if (r.status === 'rejected') {
+                const err = r.reason;
+                console.error('Character Monitor: monitor failed', err);
+            }
+        });
+    }
 }

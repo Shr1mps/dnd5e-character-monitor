@@ -37,7 +37,7 @@
                 "name": "Monitorar Recursos",
                 "hint": "Rastreia quando um personagem muda os valores de recursos em sua ficha."
             },
-            "monitorActiveEffects": {
+            "monitorEffects": {
                 "name": "Monitorar Efeitos Ativos",
                 "hint": "Rastreia quando um personagem muda efeitos ativos em sua ficha."
             },
@@ -57,7 +57,7 @@
                 "name": "Monitorar Modo da Ficha",
                 "hint": "Rastreia quando a ficha de personagem alterna entre os modos Jogo e Edição."
             },
-            "showGMonly": {
+            "showGMOnly": {
                 "name": "Exibir Monitor de Personagem apenas para usuários GM",
                 "hint": "Mensagens de chat podem ser reveladas aos jogadores usando o menu de contexto."
             },
@@ -68,6 +68,12 @@
             "showToggle": {
                 "name": "Mostrar Alternância do Monitor de Personagem",
                 "hint": "Desativar temporariamente o Monitor de Personagem desligando o botão de controle na barra de ferramentas de tokens. O botão de controle é visível apenas para usuários GM."
+            },
+            "showPrevious": {
+                "name": "Mostrar valores anteriores"
+            },
+            "cmToggle": {
+                "name": "Alternar monitor de caracteres"
             },
             "trashIcon": {
                 "name": "Habilitar Ícone de Lixeira em Mensagens de Chat do Monitor de Saúde"

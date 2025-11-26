@@ -15,25 +15,53 @@ export class ItemMonitor extends BaseMonitor {
         const actor = item.parent;
         const system = diff.system || {};
 
+        const tasks = [];
+
         if (Settings.get(`monitor${MONITOR_TYPES.EQUIP}`) && (item.type === 'equipment' || item.type === 'weapon') && 'equipped' in system) {
-            await this.checkEquip(actor, item, diff);
+            tasks.push(this.checkEquip(actor, item, diff));
         }
 
         if (Settings.get(`monitor${MONITOR_TYPES.QUANTITY}`) && 'quantity' in system) {
-            await this.checkQuantity(actor, item, diff);
+            tasks.push(this.checkQuantity(actor, item, diff));
         }
 
-        if (Settings.get(`monitor${MONITOR_TYPES.SPELL_PREP}`) && item.type === 'spell' && 'prepared' in (diff.system?.preparation || {})) {
-            await this.checkSpellPrep(actor, item, diff);
+        if (Settings.get(`monitor${MONITOR_TYPES.SPELL_PREP}`) && item.type === 'spell' && 'prepared' in system) {
+            tasks.push(this.checkSpellPrep(actor, item, diff));
         }
 
         if (Settings.get(`monitor${MONITOR_TYPES.FEATS}`) && item.type === 'feat') {
-            await this.checkFeats(actor, item, diff);
+            tasks.push(this.checkFeats(actor, item, diff));
+        }
+
+        if (Settings.get(`monitor${MONITOR_TYPES.ITEM_CHARGES}`) && (item.type === 'equipment' || item.type === 'weapon')) {
+            tasks.push(this.checkItemCharges(actor, item, diff));
         }
 
         if (Settings.get(`monitor${MONITOR_TYPES.ATTUNE}`) && (item.type === 'equipment' || item.type === 'weapon') && 'attuned' in system) {
-            await this.checkAttune(actor, item, diff);
+            tasks.push(this.checkAttune(actor, item, diff));
         }
+
+        await this.runParallel(tasks);
+    }
+
+     static _getUsesValues(item, diff) {
+        const newUses = diff.system?.uses || {};
+        const oldUses = item.system.uses;
+
+        const hasSpent = ('spent' in newUses);
+        const hasMax = ('max' in newUses);
+        if (!hasSpent && !hasMax) return;
+
+        const isSpentUnchanged = (!hasSpent || (!newUses.spent && !oldUses.spent));
+        const isMaxUnchanged = (!hasMax || (!newUses.max && !oldUses.max));
+        if (isSpentUnchanged && isMaxUnchanged) return;
+
+        const max = hasMax ? newUses.max : oldUses.max;
+        const oldMax = oldUses.max;
+        const newValue = max - newUses.spent;
+        const oldValue = oldMax - oldUses.spent;
+
+        return { newValue, oldValue, max, oldMax };
     }
 
     async checkEquip(actor, item, diff) {
@@ -77,7 +105,7 @@ export class ItemMonitor extends BaseMonitor {
         // The original code might have been trying to avoid some edge case or redundant updates.
         // Let's stick to the diff check.
         
-        const prepared = diff.system.preparation.prepared;
+        const prepared = diff.system.prepared;
         const templateData = {
             characterName: this.getCharacterName(actor),
             itemName: item.name,
@@ -90,28 +118,43 @@ export class ItemMonitor extends BaseMonitor {
     }
 
     async checkFeats(actor, item, diff) {
-        const newUses = diff.system?.uses || {};
-        const oldUses = item.system.uses;
-        
-        const hasValue = ("value" in newUses);
-        const hasMax = ("max" in newUses);
-        if (!hasValue && !hasMax) return;
+        const usesValues = ItemMonitor._getUsesValues(item, diff);
+        if (!usesValues) return;
 
-        const isValueUnchanged = (!hasValue || (!newUses.value && !oldUses.value));
-        const isMaxUnchanged = (!hasMax || (!newUses.max && !oldUses.max));
-        if (isValueUnchanged && isMaxUnchanged) return;
+        const { newValue, oldValue, max, oldMax } = usesValues;
 
         const templateData = {
             characterName: this.getCharacterName(actor),
             itemName: item.name,
-            showPrevious: Settings.get('showPrevious'),
             uses: {
-                value: (hasValue ? newUses.value : oldUses.value) || 0,
-                max: (hasMax ? newUses.max : oldUses.max) || 0
+                value: newValue,
+                max: max,
+                old: oldValue,
+                oldMax,
             }
         };
 
-        await Logger.log('feats', 'featUses.hbs', templateData);
+        await Logger.log(MONITOR_TYPES.FEATS, 'featUses.hbs', templateData);
+    }
+
+    async checkItemCharges(actor, item, diff) {
+        const usesValues = ItemMonitor._getUsesValues(item, diff);
+        if (!usesValues) return;
+
+        const { newValue, oldValue, max, oldMax } = usesValues;
+
+        const templateData = {
+            characterName: this.getCharacterName(actor),
+            itemName: item.name,
+            uses: {
+                value: newValue,
+                max: max,
+                old: oldValue,
+                oldMax,
+            }
+        };
+
+        await Logger.log(MONITOR_TYPES.ITEM_CHARGES, 'itemCharges.hbs', templateData);
     }
 
     async checkAttune(actor, item, diff) {
