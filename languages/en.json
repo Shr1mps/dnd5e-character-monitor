@@ -37,7 +37,7 @@
                 "name": "Monitor Resources",
                 "hint": "Tracks when a character changes resources values counts on their character sheet."
             },
-            "monitorActiveEffects": {
+            "monitorEffects": {
                 "name": "Monitor Active Effects",
                 "hint": "Tracks when a character changes active effects on their character sheet."
             },
@@ -57,7 +57,23 @@
                 "name": "Monitor Sheet Mode Toggle",
                 "hint": "Tracks when character sheet toggles between Play and Edit modes."
             },
-            "showGMonly": {
+            "monitorXP": {
+              "name": "Monitor XP",
+              "hint": "Tracks when a character changes XP."
+            },
+            "monitorLevel": {
+              "name": "Monitor Level",
+              "hint": "Tracks when a character changes level."
+            },
+            "monitorAC": {
+              "name": "Monitor AC",
+              "hint": "Tracks when a character changes AC."
+            },
+            "monitorItemCharges": {
+              "name": "Monitor item charges",
+              "hint": "Tracks when a character changes item charge counts on their character sheet."
+            },
+            "showGMOnly": {
                 "name": "Display Character Monitor to GM Users only",
                 "hint": "Chat messages can be revealed to players using context menu."
             },
@@ -68,6 +84,12 @@
             "showToggle": {
                 "name": "Show Character Monitor Toggle",
                 "hint": "Temporarily disable Character Monitor by toggling off the control button on the token toolbar. The control button is only visible to GM users."
+            },
+            "showPrevious": {
+                "name": "Show Previous Values"
+            },
+            "cmToggle": {
+                "name": "Toggle Character Monitor"
             },
             "trashIcon": {
                 "name": "Enable Health Monitor Chat Message Trash Icon"

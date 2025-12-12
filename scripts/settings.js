@@ -21,7 +21,7 @@ export class Settings {
             type: Object,
             default: DEFAULT_COLORS,
             config: false,
-            onChange: () => this.setCSSvariables()
+            onChange: () => this.setCssVariables()
         });
 
         for (const monitorType of Object.values(MONITOR_TYPES)) {
@@ -44,9 +44,9 @@ export class Settings {
             });
         }
 
-        game.settings.register(MODULE_ID, 'showGMonly', {
-            name: game.i18n.localize('characterMonitor.settings.showGMonly.name'),
-            hint: game.i18n.localize('characterMonitor.settings.showGMonly.hint'),
+        game.settings.register(MODULE_ID, 'showGMOnly', {
+            name: game.i18n.localize('characterMonitor.settings.showGMOnly.name'),
+            hint: game.i18n.localize('characterMonitor.settings.showGMOnly.hint'),
             scope: 'world',
             type: Boolean,
             default: false,
@@ -68,7 +68,7 @@ export class Settings {
         });
 
         game.settings.register(MODULE_ID, 'showPrevious', {
-            name: 'Show Previous Values', // Missing localization in original?
+            name: game.i18n.localize('characterMonitor.settings.showPrevious.name'),
             hint: '',
             scope: 'world',
             type: Boolean,
@@ -77,7 +77,7 @@ export class Settings {
         });
 
         game.settings.register(MODULE_ID, 'cmToggle', {
-            name: 'Toggle Character Monitor',
+            name: game.i18n.localize('characterMonitor.settings.cmToggle.name'),
             hint: '',
             scope: 'world',
             type: Boolean,
@@ -126,7 +126,7 @@ export class Settings {
         return game.settings.get(MODULE_ID, key);
     }
 
-    static setCSSvariables() {
+    static setCssVariables() {
         const root = document.querySelector(':root');
         const colors = this.get('cmColors');
         for (const [monitorType, color] of Object.entries(colors)) {
@@ -158,10 +158,11 @@ class CharacterMonitorColorMenu extends FormApplication {
             proficiency: { color: settingsData.proficiency, label: game.i18n.localize('DND5E.Proficiency') },
             sheetMode: { color: settingsData.sheetMode, label: game.i18n.localize('characterMonitor.chatMessage.sheetMode') },
             effects: { color: settingsData.effects, label: 'Active Effects' },
-            xp: { color: settingsData.xp, label: 'XP' },
-            level: { color: settingsData.level, label: 'Level' },
+            xp: { color: settingsData.xp, label: game.i18n.localize('DND5E.ExperiencePoints.Label') },
+            level: { color: settingsData.level, label: game.i18n.localize('DND5E.Level') },
             ability: { color: settingsData.ability, label: game.i18n.localize('DND5E.Ability') },
-            ac: { color: settingsData.ac, label: game.i18n.localize('DND5E.ArmorClass') }
+            ac: { color: settingsData.ac, label: game.i18n.localize('DND5E.ArmorClass') },
+            itemCharges: { color: settingsData.itemCharges, label: 'Item Charges' }
         };
         return data;
     }
