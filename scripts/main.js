@@ -3,7 +3,7 @@ import { SocketHandler } from './socket.js';
 import { ActorMonitor } from './monitors/actor.js';
 import { ItemMonitor } from './monitors/item.js';
 import { EffectMonitor } from './monitors/effect.js';
-import { MODULE_ID } from './config.js';
+import { MODULE_ID, MONITOR_TYPES } from './config.js'
 import { Logger } from './logger.js';
 
 Hooks.once('init', async () => {
@@ -44,7 +44,7 @@ Hooks.once('setup', async () => {
         });
     }
 
-    Settings.setCSSvariables();
+    Settings.setCssVariables();
 });
 
 Hooks.once('ready', () => {
@@ -76,5 +76,5 @@ async function toggleSheetMode(wrapped, event) {
         sheetMode: this._mode === 1 ? game.i18n.localize('DND5E.SheetModePlay') : game.i18n.localize('DND5E.SheetModeEdit')
     };
     
-    await Logger.log('sheetMode', 'toggleSheetMode.hbs', templateData);
+    await Logger.log(MONITOR_TYPES.EFFECTS, 'toggleSheetMode.hbs', templateData);
 }

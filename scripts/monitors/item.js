@@ -51,30 +51,53 @@ export class ItemMonitor extends BaseMonitor {
         // Check for flat keys if system is empty or incomplete
         const isFlat = Object.keys(diff).some(k => k.startsWith('system.'));
 
-        if (Settings.get(`monitor${MONITOR_TYPES.EQUIP}`) && (item.type === 'equipment' || item.type === 'weapon')) {
-             const equipped = getProperty(diff, 'system.equipped');
-             if (equipped !== undefined) await this.checkEquip(actor, item, diff);
+        const tasks = [];
+
+        if (Settings.get(`monitor${MONITOR_TYPES.EQUIP}`) && (item.type === 'equipment' || item.type === 'weapon') && 'equipped' in system) {
+            tasks.push(this.checkEquip(actor, item, diff));
         }
 
-        if (Settings.get(`monitor${MONITOR_TYPES.QUANTITY}`)) {
-            const quantity = getProperty(diff, 'system.quantity');
-            if (quantity !== undefined) await this.checkQuantity(actor, item, diff);
+        if (Settings.get(`monitor${MONITOR_TYPES.QUANTITY}`) && 'quantity' in system) {
+            tasks.push(this.checkQuantity(actor, item, diff));
         }
 
-        if (Settings.get(`monitor${MONITOR_TYPES.SPELL_PREP}`) && item.type === 'spell') {
-            // Check for prepared status change
-            const prepared = getProperty(diff, 'system.preparation.prepared');
-            if (prepared !== undefined) await this.checkSpellPrep(actor, item, diff, prepared);
+        if (Settings.get(`monitor${MONITOR_TYPES.SPELL_PREP}`) && item.type === 'spell' && 'prepared' in system) {
+            tasks.push(this.checkSpellPrep(actor, item, diff));
         }
 
         if (Settings.get(`monitor${MONITOR_TYPES.FEATS}`) && item.type === 'feat') {
-             await this.checkFeats(actor, item, diff);
+            tasks.push(this.checkFeats(actor, item, diff));
         }
 
-        if (Settings.get(`monitor${MONITOR_TYPES.ATTUNE}`) && (item.type === 'equipment' || item.type === 'weapon')) {
-            const attuned = getProperty(diff, 'system.attuned');
-            if (attuned !== undefined) await this.checkAttune(actor, item, diff);
+        if (Settings.get(`monitor${MONITOR_TYPES.ITEM_CHARGES}`) && (item.type === 'equipment' || item.type === 'weapon')) {
+            tasks.push(this.checkItemCharges(actor, item, diff));
         }
+
+        if (Settings.get(`monitor${MONITOR_TYPES.ATTUNE}`) && (item.type === 'equipment' || item.type === 'weapon') && 'attuned' in system) {
+            tasks.push(this.checkAttune(actor, item, diff));
+        }
+
+        await this.runParallel(tasks);
+    }
+
+     static _getUsesValues(item, diff) {
+        const newUses = diff.system?.uses || {};
+        const oldUses = item.system.uses;
+
+        const hasSpent = ('spent' in newUses);
+        const hasMax = ('max' in newUses);
+        if (!hasSpent && !hasMax) return;
+
+        const isSpentUnchanged = (!hasSpent || (!newUses.spent && !oldUses.spent));
+        const isMaxUnchanged = (!hasMax || (!newUses.max && !oldUses.max));
+        if (isSpentUnchanged && isMaxUnchanged) return;
+
+        const max = hasMax ? newUses.max : oldUses.max;
+        const oldMax = oldUses.max;
+        const newValue = max - newUses.spent;
+        const oldValue = oldMax - oldUses.spent;
+
+        return { newValue, oldValue, max, oldMax };
     }
 
     async checkEquip(actor, item, diff) {

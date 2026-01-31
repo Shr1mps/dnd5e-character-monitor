@@ -12,7 +12,7 @@ export class EffectMonitor extends BaseMonitor {
 
     async onCreateActiveEffect(effect, options, userID) {
         if (!this.isValidEffect(effect)) return;
-        
+
         const actor = effect.parent;
         const templateData = {
             characterName: this.getCharacterName(actor),

@@ -37,7 +37,7 @@
                 "name": "Ressourcen überwachen",
                 "hint": "Verfolgt, wenn ein Charakter Ressourcenwerte auf seinem Bogen ändert."
             },
-            "monitorActiveEffects": {
+            "monitorEffects": {
                 "name": "Aktive Effekte überwachen",
                 "hint": "Verfolgt, wenn ein Charakter aktive Effekte auf seinem Bogen ändert."
             },
@@ -57,7 +57,7 @@
                 "name": "Bogen-Modus überwachen",
                 "hint": "Verfolgt, wenn der Charakterbogen zwischen Spiel- und Bearbeitungsmodus wechselt."
             },
-            "showGMonly": {
+            "showGMOnly": {
                 "name": "Charakter-Monitor nur für Spielleiter anzeigen",
                 "hint": "Chat-Nachrichten können Spielern über das Kontextmenü angezeigt werden."
             },
@@ -68,6 +68,12 @@
             "showToggle": {
                 "name": "Charakter-Monitor Schalter anzeigen",
                 "hint": "Deaktiviert den Charakter-Monitor vorübergehend, indem der Kontrollknopf in der Token-Symbolleiste ausgeschaltet wird. Der Kontrollknopf ist nur für Spielleiter sichtbar."
+            },
+            "showPrevious": {
+                "name": "Vorherige Werte anzeigen"
+            },
+            "cmToggle": {
+                "name": "Zeichenmonitor umschalten"
             },
             "trashIcon": {
                 "name": "Papierkorb-Symbol in Gesundheits-Monitor Chat-Nachrichten aktivieren"
