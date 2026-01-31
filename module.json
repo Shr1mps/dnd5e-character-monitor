@@ -2,7 +2,7 @@
     "id": "shr1mps-character-monitor",
     "title": "Character Monitor D&D5e",
     "description": "Log an alert in chat when certain changes to an actor are made.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "authors": [
         {
             "name": "Shr1mps",
@@ -19,7 +19,8 @@
                 "id": "dnd5e",
                 "type": "system",
                 "compatibility": {
-                    "minimum": "3.0.0"
+                    "minimum": "3.0.0",
+                    "verified": "5.2"
                 }
             }
         ],
@@ -103,5 +104,5 @@
     "socket": true,
     "url": "https://github.com/Shr1mps/dnd5e-character-monitor",
     "manifest": "https://github.com/Shr1mps/dnd5e-character-monitor/releases/latest/download/module.json",
-    "download": "https://github.com/Shr1mps/dnd5e-character-monitor/releases/download/1.0.1/module.zip"
+    "download": "https://github.com/Shr1mps/dnd5e-character-monitor/releases/download/1.0.2/module.zip"
 }

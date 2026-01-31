@@ -13,31 +13,80 @@ export class ItemMonitor extends BaseMonitor {
         if (!this.shouldMonitor(item.parent)) return;
 
         const actor = item.parent;
+        // Helper to get property from diff, handling both nested and flattened keys
+        const getProperty = (obj, key) => {
+            if (key in obj) return obj[key];
+            const parts = key.split('.');
+            let current = obj;
+            for (const part of parts) {
+                if (current === undefined || current === null) return undefined;
+                current = current[part];
+            }
+            return current;
+        };
+
+        // Helper to check if a key exists in diff (nested or flat)
+        const hasProperty = (obj, key) => {
+            if (key in obj) return true;
+            // Check if any key in obj starts with key + '.' (for flat keys)
+            if (Object.keys(obj).some(k => k.startsWith(key + '.'))) return true;
+            
+            // Check nested existence
+            const parts = key.split('.');
+            let current = obj;
+            for (let i = 0; i < parts.length; i++) {
+                if (current === undefined || current === null) return false;
+                if (parts[i] in current) {
+                    current = current[parts[i]];
+                } else {
+                    return false;
+                }
+            }
+            return true;
+        };
+        
+        // We need to check both 'system' object and flat keys starting with 'system.'
         const system = diff.system || {};
+        
+        // Check for flat keys if system is empty or incomplete
+        const isFlat = Object.keys(diff).some(k => k.startsWith('system.'));
 
-        if (Settings.get(`monitor${MONITOR_TYPES.EQUIP}`) && (item.type === 'equipment' || item.type === 'weapon') && 'equipped' in system) {
-            await this.checkEquip(actor, item, diff);
+        if (Settings.get(`monitor${MONITOR_TYPES.EQUIP}`) && (item.type === 'equipment' || item.type === 'weapon')) {
+             const equipped = getProperty(diff, 'system.equipped');
+             if (equipped !== undefined) await this.checkEquip(actor, item, diff);
         }
 
-        if (Settings.get(`monitor${MONITOR_TYPES.QUANTITY}`) && 'quantity' in system) {
-            await this.checkQuantity(actor, item, diff);
+        if (Settings.get(`monitor${MONITOR_TYPES.QUANTITY}`)) {
+            const quantity = getProperty(diff, 'system.quantity');
+            if (quantity !== undefined) await this.checkQuantity(actor, item, diff);
         }
 
-        if (Settings.get(`monitor${MONITOR_TYPES.SPELL_PREP}`) && item.type === 'spell' && 'prepared' in (diff.system?.preparation || {})) {
-            await this.checkSpellPrep(actor, item, diff);
+        if (Settings.get(`monitor${MONITOR_TYPES.SPELL_PREP}`) && item.type === 'spell') {
+            // Check for prepared status change
+            const prepared = getProperty(diff, 'system.preparation.prepared');
+            if (prepared !== undefined) await this.checkSpellPrep(actor, item, diff, prepared);
         }
 
         if (Settings.get(`monitor${MONITOR_TYPES.FEATS}`) && item.type === 'feat') {
-            await this.checkFeats(actor, item, diff);
+             await this.checkFeats(actor, item, diff);
         }
 
-        if (Settings.get(`monitor${MONITOR_TYPES.ATTUNE}`) && (item.type === 'equipment' || item.type === 'weapon') && 'attuned' in system) {
-            await this.checkAttune(actor, item, diff);
+        if (Settings.get(`monitor${MONITOR_TYPES.ATTUNE}`) && (item.type === 'equipment' || item.type === 'weapon')) {
+            const attuned = getProperty(diff, 'system.attuned');
+            if (attuned !== undefined) await this.checkAttune(actor, item, diff);
         }
     }
 
     async checkEquip(actor, item, diff) {
-        const equipped = diff.system.equipped;
+        // ... (existing implementation, but need to fetch value safely)
+        // Since we passed the check in onPreUpdateItem, we know it exists.
+        // But let's use a safe getter if we want to be consistent, or just rely on the fact that we checked it.
+        // For minimal changes, I'll assume standard access if it was nested, but if it was flat, we need to extract it.
+        
+        let equipped;
+        if (diff.system?.equipped !== undefined) equipped = diff.system.equipped;
+        else equipped = diff['system.equipped'];
+
         const templateData = {
             characterName: this.getCharacterName(actor),
             itemName: item.name,
@@ -51,7 +100,9 @@ export class ItemMonitor extends BaseMonitor {
 
     async checkQuantity(actor, item, diff) {
         const oldQuantity = item.system.quantity;
-        const newQuantity = diff.system.quantity;
+        let newQuantity;
+        if (diff.system?.quantity !== undefined) newQuantity = diff.system.quantity;
+        else newQuantity = diff['system.quantity'];
         
         const templateData = {
             characterName: this.getCharacterName(actor),
@@ -67,51 +118,116 @@ export class ItemMonitor extends BaseMonitor {
         await Logger.log(monitorType, 'itemQuantity.hbs', templateData);
     }
 
-    async checkSpellPrep(actor, item, diff) {
-        // Original code had a check: if (item.characterMonitor?.prepared === diff.system.preparation.prepared) return;
-        // This relied on a wrapper that added `characterMonitor` to the item. 
-        // We should see if we can avoid the wrapper or if we need to implement it.
-        // The wrapper was: CONFIG.Item.documentClass.prototype.prepareData
-        // Let's implement the wrapper in main.js or a patch file if needed, but for now let's assume we might not need it if we trust the diff.
-        // Actually, the diff shows what CHANGED. So if it's in the diff, it changed.
-        // The original code might have been trying to avoid some edge case or redundant updates.
-        // Let's stick to the diff check.
-        
-        const prepared = diff.system.preparation.prepared;
+    async checkSpellPrep(actor, item, diff, preparedValue) {
         const templateData = {
             characterName: this.getCharacterName(actor),
             itemName: item.name,
             showPrevious: Settings.get('showPrevious'),
-            prepared: prepared
+            prepared: preparedValue
         };
 
-        const monitorType = prepared ? 'on' : 'off';
+        const monitorType = preparedValue ? 'on' : 'off';
         await Logger.log(monitorType, 'spellPrepare.hbs', templateData);
     }
 
     async checkFeats(actor, item, diff) {
-        const newUses = diff.system?.uses || {};
-        const oldUses = item.system.uses;
+        // Check for uses in system.uses or system.activities
         
-        const hasValue = ("value" in newUses);
-        const hasMax = ("max" in newUses);
-        if (!hasValue && !hasMax) return;
-
-        const isValueUnchanged = (!hasValue || (!newUses.value && !oldUses.value));
-        const isMaxUnchanged = (!hasMax || (!newUses.max && !oldUses.max));
-        if (isValueUnchanged && isMaxUnchanged) return;
-
-        const templateData = {
-            characterName: this.getCharacterName(actor),
-            itemName: item.name,
-            showPrevious: Settings.get('showPrevious'),
-            uses: {
-                value: (hasValue ? newUses.value : oldUses.value) || 0,
-                max: (hasMax ? newUses.max : oldUses.max) || 0
+        // Helper to extract value from nested or flat diff
+        const getVal = (path) => {
+            if (diff[path] !== undefined) return diff[path];
+            const parts = path.split('.');
+            let current = diff;
+            for (const part of parts) {
+                if (current === undefined || current === null) return undefined;
+                current = current[part];
             }
+            return current;
         };
 
-        await Logger.log('feats', 'featUses.hbs', templateData);
+        // Check legacy uses
+        const newUsesValue = getVal('system.uses.value');
+        const newUsesMax = getVal('system.uses.max');
+        
+        if (newUsesValue !== undefined || newUsesMax !== undefined) {
+             const oldUses = item.system.uses;
+             const templateData = {
+                characterName: this.getCharacterName(actor),
+                itemName: item.name,
+                showPrevious: Settings.get('showPrevious'),
+                uses: {
+                    value: (newUsesValue !== undefined ? newUsesValue : oldUses.value) || 0,
+                    max: (newUsesMax !== undefined ? newUsesMax : oldUses.max) || 0
+                }
+            };
+            await Logger.log('feats', 'featUses.hbs', templateData);
+            return;
+        }
+
+        // Check Activities (dnd5e v3+)
+        // Activities are stored in system.activities.ID.uses.value
+        // Diff could be system: { activities: { ID: { uses: { value: X } } } }
+        // or "system.activities.ID.uses.value": X
+        
+        let activitiesDiff = diff.system?.activities;
+        if (!activitiesDiff) {
+            // Check for flat keys starting with system.activities
+            const flatKeys = Object.keys(diff).filter(k => k.startsWith('system.activities.'));
+            if (flatKeys.length > 0) {
+                // Construct a partial object or just parse the first one found?
+                // If multiple activities update at once, we might spam chat.
+                // Let's handle each changed activity.
+                
+                for (const key of flatKeys) {
+                    if (key.endsWith('.uses.value')) {
+                        // Extract ID: system.activities.ID.uses.value
+                        const parts = key.split('.');
+                        const id = parts[2];
+                        const newValue = diff[key];
+                        
+                        // Get old value from item
+                        const activity = item.system.activities?.[id];
+                        if (!activity) continue;
+                        
+                        const oldValue = activity.uses?.value;
+                        const max = activity.uses?.max; // Might be in item data
+                        
+                        const templateData = {
+                            characterName: this.getCharacterName(actor),
+                            itemName: item.name, // Or activity name? Usually item name is preferred for context.
+                            showPrevious: Settings.get('showPrevious'),
+                            uses: {
+                                value: newValue,
+                                max: max
+                            }
+                        };
+                        await Logger.log('feats', 'featUses.hbs', templateData);
+                    }
+                }
+            }
+        } else {
+            // Nested activities diff
+            for (const [id, activityData] of Object.entries(activitiesDiff)) {
+                if (activityData.uses?.value !== undefined) {
+                     const activity = item.system.activities?.[id];
+                     if (!activity) continue;
+                     
+                     const newValue = activityData.uses.value;
+                     const max = activity.uses?.max;
+
+                     const templateData = {
+                        characterName: this.getCharacterName(actor),
+                        itemName: item.name,
+                        showPrevious: Settings.get('showPrevious'),
+                        uses: {
+                            value: newValue,
+                            max: max
+                        }
+                    };
+                    await Logger.log('feats', 'featUses.hbs', templateData);
+                }
+            }
+        }
     }
 
     async checkAttune(actor, item, diff) {

@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2] - 2026-01-31
+
+### Fixed
+- Fixed compatibility with dnd5e system v5.2+ by adding defensive checking for deprecated `ActorSheet5eCharacter2` class
+- Module now gracefully handles both legacy and new character sheets
+- Sheet mode monitoring feature automatically disabled on new character sheets (no longer causes module initialization errors)
+
+
 ## [1.0.1] - 2025-11-23
 
 ### Fixed

@@ -11,11 +11,19 @@ Hooks.once('init', async () => {
     
     // Register wrappers
     if (game.modules.get('lib-wrapper')?.active) {
-        libWrapper.register(MODULE_ID, 'game.dnd5e.applications.actor.ActorSheet5eCharacter2.prototype._onChangeSheetMode', toggleSheetMode, 'WRAPPER');
-        // We might not need the prepareItem wrapper if we rely on diffs, but let's keep it if we need to store state.
-        // The original code stored 'prepared' state. My ItemMonitor implementation uses diffs, so I might skip it.
-        // But let's keep it for safety if the original author had a specific reason (e.g. derived data not in diff).
-        // Actually, diffs are reliable for preparation changes. I'll skip the prepareItem wrapper for now to keep it clean.
+        // Check if ActorSheet5eCharacter2 exists (legacy character sheet)
+        // This class was deprecated in dnd5e v4.0+ and replaced with new character sheets
+        try {
+            const legacySheet = game.dnd5e?.applications?.actor?.ActorSheet5eCharacter2;
+            if (legacySheet && typeof legacySheet.prototype._onChangeSheetMode === 'function') {
+                libWrapper.register(MODULE_ID, 'game.dnd5e.applications.actor.ActorSheet5eCharacter2.prototype._onChangeSheetMode', toggleSheetMode, 'WRAPPER');
+                console.log(`${MODULE_ID} | Sheet mode monitoring enabled for legacy character sheet`);
+            } else {
+                console.warn(`${MODULE_ID} | Sheet mode monitoring not available - ActorSheet5eCharacter2 not found (dnd5e v5+ uses new character sheets)`);
+            }
+        } catch (error) {
+            console.warn(`${MODULE_ID} | Could not register sheet mode wrapper:`, error);
+        }
     }
 });
 
