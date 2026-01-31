@@ -61,16 +61,16 @@ export class ItemMonitor extends BaseMonitor {
             tasks.push(this.checkQuantity(actor, item, diff));
         }
 
-        if (Settings.get(`monitor${MONITOR_TYPES.SPELL_PREP}`) && item.type === 'spell' && 'prepared' in system) {
-            tasks.push(this.checkSpellPrep(actor, item, diff));
+        if (Settings.get(`monitor${MONITOR_TYPES.SPELL_PREP}`) && item.type === 'spell') {
+            // Check for spell preparation changes (system.preparation.prepared)
+            const prepared = diff.system?.preparation?.prepared ?? diff['system.preparation.prepared'];
+            if (prepared !== undefined) {
+                tasks.push(this.checkSpellPrep(actor, item, diff, prepared));
+            }
         }
 
         if (Settings.get(`monitor${MONITOR_TYPES.FEATS}`) && item.type === 'feat') {
             tasks.push(this.checkFeats(actor, item, diff));
-        }
-
-        if (Settings.get(`monitor${MONITOR_TYPES.ITEM_CHARGES}`) && (item.type === 'equipment' || item.type === 'weapon')) {
-            tasks.push(this.checkItemCharges(actor, item, diff));
         }
 
         if (Settings.get(`monitor${MONITOR_TYPES.ATTUNE}`) && (item.type === 'equipment' || item.type === 'weapon') && 'attuned' in system) {
@@ -80,24 +80,10 @@ export class ItemMonitor extends BaseMonitor {
         await this.runParallel(tasks);
     }
 
-     static _getUsesValues(item, diff) {
-        const newUses = diff.system?.uses || {};
-        const oldUses = item.system.uses;
-
-        const hasSpent = ('spent' in newUses);
-        const hasMax = ('max' in newUses);
-        if (!hasSpent && !hasMax) return;
-
-        const isSpentUnchanged = (!hasSpent || (!newUses.spent && !oldUses.spent));
-        const isMaxUnchanged = (!hasMax || (!newUses.max && !oldUses.max));
-        if (isSpentUnchanged && isMaxUnchanged) return;
-
-        const max = hasMax ? newUses.max : oldUses.max;
-        const oldMax = oldUses.max;
-        const newValue = max - newUses.spent;
-        const oldValue = oldMax - oldUses.spent;
-
-        return { newValue, oldValue, max, oldMax };
+    async runParallel(tasks) {
+        if (tasks.length > 0) {
+            await Promise.all(tasks);
+        }
     }
 
     async checkEquip(actor, item, diff) {

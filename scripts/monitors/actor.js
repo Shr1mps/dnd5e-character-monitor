@@ -185,7 +185,7 @@ export class ActorMonitor extends BaseMonitor {
 
             // Only the user who triggered the update should send the message to avoid duplicates
             if (game.user.id === userID) {
-                await Logger.log(`${MONITOR_TYPES.HP}${direction}`, 'hp.hbs', data);
+                await Logger.log(`hp${direction}`, 'hp.hbs', data);
             }
         }
     }

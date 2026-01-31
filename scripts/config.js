@@ -1,4 +1,4 @@
-export const MODULE_ID = 'vlad-character-monitor';
+export const MODULE_ID = 'shr1mps-character-monitor';
 
 export const MONITOR_TYPES = {
     HP: 'HP',
@@ -15,8 +15,7 @@ export const MONITOR_TYPES = {
     XP: 'XP',
     LEVEL: 'Level',
     ABILITY: 'Ability',
-    AC: 'AC',
-    ITEM_CHARGES: 'ItemCharges'
+    AC: 'AC'
 };
 
 export const DEFAULT_COLORS = {
@@ -33,6 +32,5 @@ export const DEFAULT_COLORS = {
     sheetMode: '#000000',
     xp: '#b59b3c',
     level: '#b59b3c',
-    ac: '#37908a',
-    itemCharges: '#425af5',
+    ac: '#37908a'
 };
