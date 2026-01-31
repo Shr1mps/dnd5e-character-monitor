@@ -2,7 +2,7 @@
     "id": "shr1mps-character-monitor",
     "title": "Character Monitor D&D5e",
     "description": "Log an alert in chat when certain changes to an actor are made.",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "authors": [
         {
             "name": "Shr1mps",
@@ -10,7 +10,7 @@
         }
     ],
     "compatibility": {
-        "minimum": "12",
+        "minimum": "13",
         "verified": "13"
     },
     "relationships": {
