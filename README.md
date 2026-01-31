@@ -8,6 +8,11 @@
 
 Log an alert in chat when certain changes to an actor are made.
 
+# --- DEPRECATED ---
+
+This module is no longer being maintained, Please use [Simrakí's Character Monitor](https://foundryvtt.com/packages/simraki-character-monitor) module instead.
+Thanks to Simraki for taking over this module.
+
 ## Installation
 
 It's always easiest to install modules from the in game add-on browser.
